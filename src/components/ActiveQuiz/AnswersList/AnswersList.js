@@ -1,18 +1,21 @@
 import React from 'react'
-import './AnswersList.css'
+import classes from './AnswersList.css'
 import AnswerItem from './Answeritem/Answeritem'
 
-const AnswersList = props => (
-  <ul className="AnswersList">
+const AnswersList = props => {
+  return (
+  <ul className={classes.AnswersList}>
     { props.answers.map((answer, index) => {
       return (
        <AnswerItem
          key={index}
          answer={answer}
+         onAnswerClick={props.onAnswerClick}
+         state={props.state ? props.state[answer.id] : null}
        />
       )
     }) }
   </ul>
 )
-
+}
 export default AnswersList
